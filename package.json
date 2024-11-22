@@ -1,0 +1,22 @@
+{
+  "name": "gemmint",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-ethers": "^3.0.8",
+    "@openzeppelin/hardhat-upgrades": "^3.5.0",
+    "chai": "^5.1.2",
+    "ethers": "^6.6.0",
+    "hardhat": "^2.22.16"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts-upgradeable": "^5.1.0"
+  }
+}
