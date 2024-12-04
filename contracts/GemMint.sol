@@ -23,7 +23,6 @@ contract GemMints is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, 
         initializer public
     {
         __ERC20_init("GemMints", "GEM");
-        __ERC20Burnable_init();
         __AccessControl_init();
         __ERC20Permit_init("GemMints");
         __UUPSUpgradeable_init();

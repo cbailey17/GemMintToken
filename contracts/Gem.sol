@@ -7,10 +7,10 @@ import {AccessControlUpgradeable} from "@openzeppelin/contracts-upgradeable/acce
 import {UUPSUpgradeable} from "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
 import {Initializable} from "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 
-contract GemMint is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, AccessControlUpgradeable, UUPSUpgradeable {
+contract GemMint is Initializable, ERC20Upgradeable, AccessControlUpgradeable, UUPSUpgradeable {
     // Roles
     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-    bytes32 public constant PARTNER_MANAGER_ROLE = keccak256("PARTNER_MANAGER_ROLE");
+    bytes32 public constant ADMIN_ROLE = keccak256("ADMIN_ROLE");
 
     // State Variables
     address public rewardsPool;
@@ -33,7 +33,6 @@ contract GemMint is Initializable, ERC20Upgradeable, ERC20BurnableUpgradeable, A
      */
     function initialize(address admin, address upgrader, address rewardsPool_) public initializer {
         __ERC20_init("GemMint", "GEMM");
-        __ERC20Burnable_init();
         __AccessControl_init();
         __UUPSUpgradeable_init();
 

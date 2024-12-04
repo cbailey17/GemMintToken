@@ -6,9 +6,8 @@ import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 import "@openzeppelin/contracts/token/ERC20/extensions/ERC20Burnable.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
-contract GemMint is ERC20, ERC20Burnable, Ownable {
+contract GemMint is ERC20, Ownable {
     uint256 public constant INITIAL_SUPPLY = 10_000_000_000 * 10**18; // 10 billion tokens
-    uint256 public constant TRANSACTION_FEE = 5; // 0.5% fee
 
     struct RewardInfo {
         uint256 baseReward;
@@ -79,8 +78,4 @@ contract GemMint is ERC20, ERC20Burnable, Ownable {
 
         rewardsPoolBalance += (baseReward + partnerReward);
     }
-
-    function claimRaffleEntry(uint256 transactionAmount) external view returns (bool) {
-        return transactionAmount >= 500 ether;
-    }
-}
+  }
