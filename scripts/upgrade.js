@@ -1,15 +1,25 @@
 const { ethers, upgrades } = require("hardhat");
 
 async function main() {
-  const GemMintV2 = await ethers.getContractFactory("GemMintV2");
-  const proxyAddress = "0xYourProxyAddress";
+  const NEW_IMPLEMENTATION_ADDRESS = "ADDRESS_OF_NEW_IMPLEMENTATION"; 
 
-  console.log("Upgrading GemMint...");
-  await upgrades.upgradeProxy(proxyAddress, GemMintV2);
-  console.log("Upgrade successful!");
+  console.log("Starting upgrade...");
+
+  // Fetch the address of the deployed proxy
+  const GEMMINT_PROXY_ADDRESS = ""; 
+
+  // Get the updated implementation contract
+  const GemMintV2 = await ethers.getContractFactory("GemMintV2");
+  
+  // Upgrade the proxy
+  const gemMint = await upgrades.upgradeProxy(GEMMINT_PROXY_ADDRESS, GemMintV2);
+  console.log("GemMint upgraded successfully. New implementation address:", await upgrades.erc1967.getImplementationAddress(gemMint.address));
 }
 
-main().catch((error) => {
-  console.error(error);
-  process.exitCode = 1;
-});
+main()
+  .then(() => process.exit(0))
+  .catch((error) => {
+    console.error(error);
+    process.exit(1);
+  });
+
